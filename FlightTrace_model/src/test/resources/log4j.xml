@@ -9,7 +9,7 @@
             <param name="ConversionPattern" value="%m%n" />
         </layout>
     </appender>
-    <category name="coreservlets">
+    <category name="cl.median.trace">
         <priority value="DEBUG"/>
     </category>
     <category name="org.springframework">
