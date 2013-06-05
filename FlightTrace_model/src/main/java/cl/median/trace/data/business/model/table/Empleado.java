@@ -1,11 +1,14 @@
 package cl.median.trace.data.business.model.table;
 
 import cl.median.trace.data.business.model.GeneratedIdEntity;
+import cl.median.trace.data.model.data.EmpleadoEstado;
 import java.sql.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
@@ -16,7 +19,8 @@ import org.hibernate.annotations.IndexColumn;
 public class Empleado extends GeneratedIdEntity {
 
     @Column(name = "estado")
-    private String estado;
+    @Enumerated(EnumType.STRING)
+    private EmpleadoEstado estado;
     @Column(name = "nombre")
     private String nombre;
     @Column(name = "masculino")
@@ -31,14 +35,6 @@ public class Empleado extends GeneratedIdEntity {
     @JoinColumn(name = "IdEmpleado")
     @IndexColumn(name = "idx")
     private List<Direccion> direcciones;
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
-    }
 
     public String getNombre() {
         return nombre;
@@ -86,6 +82,14 @@ public class Empleado extends GeneratedIdEntity {
 
     public void setDirecciones(List<Direccion> direcciones) {
         this.direcciones = direcciones;
+    }
+
+    public EmpleadoEstado getEstado() {
+        return estado;
+    }
+
+    public void setEstado(EmpleadoEstado estado) {
+        this.estado = estado;
     }
 
 }

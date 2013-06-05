@@ -4,6 +4,7 @@ import cl.median.trace.data.business.dao.table.DireccionDAO;
 import cl.median.trace.data.business.dao.table.EmpleadoDAO;
 import cl.median.trace.data.business.model.table.Direccion;
 import cl.median.trace.data.business.model.table.Empleado;
+import cl.median.trace.data.model.data.EmpleadoEstado;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
@@ -32,7 +33,7 @@ public class TestFlightTrace {
         LOGGER.debug("/\n///////////////////// inicio de test");
 
         Empleado empleado = new Empleado();
-        empleado.setEstado("ocupado");
+        empleado.setEstado(EmpleadoEstado.DISPONIBLE);
         empleado.setFechaNacimiento(new Date(0));
         empleado.setMasculino(true);
         empleado.setNacionalidad("chileno");
@@ -55,7 +56,7 @@ public class TestFlightTrace {
 
         direccion.setEmpleado(empleado);
 
-        LOGGER.debug(empleado.toString());
+        LOGGER.debug("DDDDDDDDDDDDDDDDD " + empleado.toString());
         
         empleadoDAO.persist(empleado);
         
