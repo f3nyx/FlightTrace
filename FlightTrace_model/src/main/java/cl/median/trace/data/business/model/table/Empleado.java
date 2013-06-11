@@ -2,6 +2,7 @@ package cl.median.trace.data.business.model.table;
 
 import cl.median.trace.data.business.model.GeneratedIdEntity;
 import cl.median.trace.data.model.data.EmpleadoEstado;
+import cl.median.trace.data.model.data.Sexo;
 import java.sql.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
@@ -23,8 +24,9 @@ public class Empleado extends GeneratedIdEntity {
     private EmpleadoEstado estado;
     @Column(name = "nombre")
     private String nombre;
-    @Column(name = "masculino")
-    private boolean masculino;
+    @Column(name = "sexo")
+    @Enumerated(EnumType.STRING)
+    private Sexo sexo;
     @Column(name = "rut")
     private int rut;
     @Column(name = "nacionalidad")
@@ -42,14 +44,6 @@ public class Empleado extends GeneratedIdEntity {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
-    }
-
-    public boolean isMasculino() {
-        return masculino;
-    }
-
-    public void setMasculino(boolean masculino) {
-        this.masculino = masculino;
     }
 
     public int getRut() {
@@ -90,6 +84,14 @@ public class Empleado extends GeneratedIdEntity {
 
     public void setEstado(EmpleadoEstado estado) {
         this.estado = estado;
+    }
+
+    public Sexo getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(Sexo sexo) {
+        this.sexo = sexo;
     }
 
 }

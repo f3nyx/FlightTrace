@@ -1,10 +1,13 @@
 package cl.median.trace.jpa;
 
+import cl.median.trace.data.business.dao.table.DepartureFlightTraceDAO;
 import cl.median.trace.data.business.dao.table.DireccionDAO;
 import cl.median.trace.data.business.dao.table.EmpleadoDAO;
+import cl.median.trace.data.business.model.table.DepartureFlightTrace;
 import cl.median.trace.data.business.model.table.Direccion;
 import cl.median.trace.data.business.model.table.Empleado;
 import cl.median.trace.data.model.data.EmpleadoEstado;
+import cl.median.trace.data.model.data.Sexo;
 import java.util.ArrayList;
 import java.sql.Date;
 import java.util.List;
@@ -27,15 +30,17 @@ public class TestFlightTrace {
     private EmpleadoDAO empleadoDAO;
     @Resource(name = "direccionDAO")
     private DireccionDAO direccionDAO;
+    @Resource(name = "departureFlightTraceDAO")
+    private DepartureFlightTraceDAO departureFlightTraceDAO;
 
     @Test
     public void empleadoTestDAO() {
         LOGGER.debug("/\n///////////////////// inicio de test");
 
         Empleado empleado = new Empleado();
-        empleado.setEstado(EmpleadoEstado.DISPONIBLE);
+        empleado.setEstado(EmpleadoEstado.AUSENTE);
         empleado.setFechaNacimiento(new Date(0));
-        empleado.setMasculino(true);
+        empleado.setSexo(Sexo.MASCULINO);
         empleado.setNacionalidad("chileno");
         empleado.setNombre("miguel");
         empleado.setRut(16978752);
@@ -57,13 +62,42 @@ public class TestFlightTrace {
         direccion.setEmpleado(empleado);
 
         LOGGER.debug("DDDDDDDDDDDDDDDDD " + empleado.toString());
-        
+
         empleadoDAO.persist(empleado);
-        
+
         List<Empleado> empleados = new ArrayList<Empleado>();
-        
+
         empleados = empleadoDAO.findAll();
-        
+
         Assert.assertFalse(empleados.isEmpty());
+    }
+
+    @Test
+    public void departureFlightTraceTest() {
+        LOGGER.debug("/\n///////////////////// inicio de test //departureFlightTrace//departureFlightTrace //departureFlightTrace//departureFlightTrace//\n");
+
+        DepartureFlightTrace departureFlightTrace = new DepartureFlightTrace();
+
+        departureFlightTrace.setAeropuertoArrival(null);
+        departureFlightTrace.setAeropuertoDeparture(null);
+        departureFlightTrace.setAuxiliarVuelo(null);
+        departureFlightTrace.setCantidadEquipajeDestino(1);
+        departureFlightTrace.setCantidadPaxDestino(1);
+        departureFlightTrace.setCapitan(null);
+        departureFlightTrace.setCodigoAtraso(1);
+        departureFlightTrace.setEovSignature(null);
+        departureFlightTrace.setEstimadaArrivo(null);
+        departureFlightTrace.setExtraCabinCrew(null);
+        departureFlightTrace.setExtraCockpitCrew(null);
+        departureFlightTrace.setExtraInfo(null);
+        departureFlightTrace.setFechaDeparture(null);
+        departureFlightTrace.setFinalFuel(1);
+        departureFlightTrace.setFlightPlanFuel(1);
+        departureFlightTrace.setHoraCierrePuerta(null);
+        departureFlightTrace.setHoraItinerarioLlegada(null);
+
+
+        departureFlightTraceDAO.persist(departureFlightTrace);
+
     }
 }
