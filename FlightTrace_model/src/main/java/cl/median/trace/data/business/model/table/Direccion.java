@@ -26,7 +26,7 @@ public class Direccion extends GeneratedIdEntity {
     @Column(name = "otro")
     private String otro;
     @ManyToOne
-    @JoinColumn(name = "IdEmpeado")
+    @JoinColumn(name = "IdEmpleado")
     private Empleado empleado;
 
     public String getPais() {

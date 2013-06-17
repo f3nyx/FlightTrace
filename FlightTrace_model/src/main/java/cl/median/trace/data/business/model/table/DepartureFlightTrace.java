@@ -1,16 +1,18 @@
 package cl.median.trace.data.business.model.table;
 
 import cl.median.trace.data.business.model.GeneratedIdEntity;
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "departureFlightTrace")
 public class DepartureFlightTrace extends GeneratedIdEntity {
 
-    @Column(name = "fechaDeparture")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaDeparture;
     @Column(name = "numeroVuelo")
     private int numeroVuelo;
@@ -24,19 +26,19 @@ public class DepartureFlightTrace extends GeneratedIdEntity {
     private String aeropuertoDeparture;
     @Column(name = "aeropuertoArrival")
     private String aeropuertoArrival;
-    @Column(name = "horaItinerarioSalida")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date horaItinerarioSalida;
-    @Column(name = "horaItinerarioLlegada")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date horaItinerarioLlegada;
-    @Column(name = "horaCierrePuerta")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date horaCierrePuerta;
-    @Column(name = "horaPushback")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date horaPushback;
-    @Column(name = "horaTakeoff")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date horaTakeoff;
     @Column(name = "codigoAtraso")
     private int codigoAtraso;
-    @Column(name = "estimadaArrivo")
+    @Temporal(TemporalType.TIMESTAMP)
     private Date estimadaArrivo;
     @Column(name = "cantidadPaxDestino")
     private int cantidadPaxDestino;

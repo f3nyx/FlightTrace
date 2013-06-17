@@ -3,7 +3,7 @@ package cl.median.trace.data.business.model.table;
 import cl.median.trace.data.business.model.GeneratedIdEntity;
 import cl.median.trace.data.model.data.EmpleadoEstado;
 import cl.median.trace.data.model.data.Sexo;
-import java.sql.Date;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,6 +13,8 @@ import javax.persistence.Enumerated;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import org.hibernate.annotations.IndexColumn;
 
 @Entity
@@ -31,7 +33,7 @@ public class Empleado extends GeneratedIdEntity {
     private int rut;
     @Column(name = "nacionalidad")
     private String nacionalidad;
-    @Column(name = "fechaNacimiento")
+   @Temporal(TemporalType.TIMESTAMP)
     private Date fechaNacimiento;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "IdEmpleado")
