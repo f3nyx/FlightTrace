@@ -1,1 +1,1 @@
- mvn clean && mvn install && mvn tomcat:redeploy
+comando: mvn clean && mvn install && mvn tomcat:redeploy
