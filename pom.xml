@@ -11,7 +11,8 @@
     <modules>
         <module>FlightTrace_model</module>
         <module>FlightTrace_web</module>
-    </modules>
+    <module>FlightTrace_mock</module>
+  </modules>
   
     <dependencies>
         <!-- dependencias de log4j -->
