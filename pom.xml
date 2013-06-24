@@ -12,6 +12,7 @@
         <module>FlightTrace_model</module>
         <module>FlightTrace_web</module>
     <module>FlightTrace_mock</module>
+    <module>FlightTrace_mobile</module>
   </modules>
   
     <dependencies>

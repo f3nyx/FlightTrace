@@ -10,90 +10,117 @@
     </h:head>  
 
     <h:body>  
-        
+
         <h:form>
 
-        <p:growl showDetail="true" sticky="true"/>  
+            <p:growl showDetail="true" sticky="true"/>  
 
-        <p:menubar>  
-            <p:submenu icon="appleIcon" label=" ">  
-                <p:menuitem value="About This Mac" url="#" onclick="info.show();" 
-                            icon="ui-icon-info"></p:menuitem>  
-            </p:submenu>  
+            <p:menubar autoDisplay="false">  
+                <p:submenu icon="appleIcon" label=" ">  
+                    <p:menuitem value="About This Mac" url="#" onclick="info.show();" 
+                                icon="ui-icon-info"></p:menuitem>  
+                </p:submenu>  
 
-            <p:submenu label="Finder">  
-                <p:menuitem value="About Finder" url="#" styleClass="open"
-                            icon="ui-icon-info"></p:menuitem>  
-            </p:submenu>  
+                <p:submenu label="Finder">  
+                    <p:menuitem value="About Finder" url="#" styleClass="open"
+                                icon="ui-icon-info"></p:menuitem>  
 
-            <p:submenu label="Edit">  
-                <p:menuitem value="Undo" url="#" styleClass="undo" 
-                            icon="ui-icon-arrowreturnthick-1-w"></p:menuitem>  
-                <p:menuitem value="Redo" url="#" styleClass="redo" 
-                            icon="ui-icon-arrowreturnthick-1-e"></p:menuitem>  
-            </p:submenu>  
+                    <p:menuitem value="Departure Form" url="#" onclick="departureFlightTraceForm.show()" 
+                                icon="ui-icon-info"></p:menuitem>
+                </p:submenu>  
 
-            <p:submenu label="View">  
-                <p:menuitem value="Source" url="#" onclick="source.show();"
-                            icon="ui-icon-search"></p:menuitem>  
-            </p:submenu>  
-        </p:menubar>  
+                <p:submenu label="Edit">  
+                    <p:menuitem value="Undo" url="#" styleClass="undo" 
+                                icon="ui-icon-arrowreturnthick-1-w"></p:menuitem>  
+                    <p:menuitem value="Redo" url="#" styleClass="redo" 
+                                icon="ui-icon-arrowreturnthick-1-e"></p:menuitem>  
+                </p:submenu>  
 
-        <p:dialog header="About This Mac" draggable="true" widgetVar="info" showEffect="fade" hideEffect="fade">  
-            <h:form>  
-                <h:panelGrid columns="1" style="width:100%;text-align:center;">  
-                    <p:graphicImage value="/resources/images/macosx/apple_logo.png"/>  
-                    <h:outputText value="MOCK OS X" style="font-size:16px"/>  
-                    <h:outputText value="Version 10.5.7" />  
-                    <p:commandButton value="Software Update" async="true" onclick="return false;"/>  
-                </h:panelGrid>  
+                <p:submenu label="View">  
+                    <p:menuitem value="Source" url="#" onclick="source.show();"
+                                icon="ui-icon-search"></p:menuitem>  
+                </p:submenu>  
+            </p:menubar>  
 
-                <h:panelGrid columns="2">  
-                    <h:outputText value="Processor" style="font-weight:bold"/>  
-                    <h:outputText value="2.4 GHz Intel Core 2 Duo" />  
+            <p:dialog header="About This Mac" draggable="true" widgetVar="info" showEffect="fade" hideEffect="fade">  
+                <h:form>  
+                    <h:panelGrid columns="1" style="width:100%;text-align:center;">  
+                        <p:graphicImage value="/resources/images/macosx/apple_logo.png"/>  
+                        <h:outputText value="MOCK OS X" style="font-size:16px"/>  
+                        <h:outputText value="Version 10.5.7" />  
+                        <p:commandButton value="Software Update" async="true" onclick="return false;"/>  
+                    </h:panelGrid>  
 
-                    <h:outputText value="Memory" style="font-weight:bold"/>  
-                    <h:outputText value="4 GB 667 MHz DDR2 SDRAM" />  
+                    <h:panelGrid columns="2">  
+                        <h:outputText value="Processor" style="font-weight:bold"/>  
+                        <h:outputText value="2.4 GHz Intel Core 2 Duo" />  
 
-                    <h:outputText value="Startup Disk" style="font-weight:bold"/>  
-                    <h:outputText value="Macintosh HD" />  
-                </h:panelGrid>  
+                        <h:outputText value="Memory" style="font-weight:bold"/>  
+                        <h:outputText value="4 GB 667 MHz DDR2 SDRAM" />  
 
-            </h:form>  
-        </p:dialog>  
+                        <h:outputText value="Startup Disk" style="font-weight:bold"/>  
+                        <h:outputText value="Macintosh HD" />  
+                    </h:panelGrid>  
 
-        <p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false" showEffect="fade" hideEffect="fade">  
-            <h:form>  
-                <p:terminal widgetVar="term" commandHandler="#{terminalController.handleCommand}" width="590px"  
-                            welcomeMessage="Welcome to PrimeFaces Terminal, how are you today? Try date and greet  commands."/>  
-            </h:form>  
-        </p:dialog>  
+                </h:form>  
+            </p:dialog> 
 
-        <p:dialog widgetVar="terminal" styleClass="terminal terminalDialog" width="600" height="400" header="Terminal" showEffect="fade" hideEffect="fade">  
-            <h:form>  
-                <p:terminal commandHandler="#{terminalController.handleCommand}" width="100%" height="100%"   
-                            welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/>  
-            </h:form>  
-        </p:dialog>  
+            <p:dialog header="Departure Flight Trace Form"
+                      draggable="false"
+                      widgetVar="departureFlightTraceForm"
+                      showEffect="fade"
+                      hideEffect="fade">
+                <h:form>
+                    <h:panelGrid columns="3">
+                        <h:outputLabel for="firstname" value="Firstname: *" />  
+                        <p:inputText id="firstname"   
+                                     value="" required="true" label="Firstname">  
+                            <f:validateLength minimum="2" />  
+                        </p:inputText>  
+                        <p:message for="firstname" />  
 
-        <p:dock>  
-            <p:menuitem value="finder" icon="/resources/images/macosx/finder.png" url="#" />  
-            <p:menuitem value="terminal" icon="/resources/images/macosx/terminal.png" url="#" onclick="terminal.show();
-                        term.focus();"/>  
-            <p:menuitem value="safari" icon="/resources/images/macosx/safari.png" url="#" />  
-            <p:menuitem value="itunes" icon="/resources/images/macosx/itunes.png" url="#"/>  
-            <p:menuitem value="ichat" icon="/resources/images/macosx/ichat.png" url="#"/>  
-            <p:menuitem value="trash" icon="/resources/images/macosx/trash.png" url="#"/>  
-        </p:dock>  
+                        <h:outputLabel for="surname" value="Surname: *" />  
+                        <p:inputText id="surname"   
+                                     value="" required="true" label="Surname"/>  
+                        <p:message for="surname" />
+                        <p:commandButton value="Ajax Submit" update="@form" id="ajax"  
+                                         styleClass="ui-priority-primary"/> 
+                    </h:panelGrid>  
+                </h:form>
+            </p:dialog>
 
-        <p:stack icon="/resources/images/stack/stack.png">  
-            <p:menuitem value="Aperture" icon="/resources/images/stack/aperture.png" url="#" />  
-            <p:menuitem value="Photoshop" icon="/resources/images/stack/photoshop.png" url="#"/>  
-            <p:menuitem value="Coda" icon="/resources/images/stack/coda.png" url="#"/>  
-            <p:menuitem value="Safari" icon="/resources/images/stack/safari.png" url="#" />  
-            <p:menuitem value="Finder" icon="/resources/images/stack/finder.png" url="#" />  
-        </p:stack> 
-        
+            <p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false" showEffect="fade" hideEffect="fade">  
+                <h:form>  
+                    <p:terminal widgetVar="term" commandHandler="#{terminalController.handleCommand}" width="590px"  
+                                welcomeMessage="Welcome to PrimeFaces Terminal, how are you today? Try date and greet  commands."/>  
+                </h:form>  
+            </p:dialog>  
+
+            <p:dialog widgetVar="terminal" styleClass="terminal terminalDialog" width="600" height="400" header="Terminal" showEffect="fade" hideEffect="fade">  
+                <h:form>  
+                    <p:terminal commandHandler="#{terminalController.handleCommand}" width="100%" height="100%"   
+                                welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/>  
+                </h:form>  
+            </p:dialog>  
+
+            <p:dock>  
+                <p:menuitem value="finder" icon="/resources/images/macosx/finder.png" url="#" />  
+                <p:menuitem value="terminal" icon="/resources/images/macosx/terminal.png" url="#" onclick="terminal.show();
+                            term.focus();"/>  
+                <p:menuitem value="safari" icon="/resources/images/macosx/safari.png" url="#" />  
+                <p:menuitem value="itunes" icon="/resources/images/macosx/itunes.png" url="#"/>  
+                <p:menuitem value="ichat" icon="/resources/images/macosx/ichat.png" url="#"/>  
+                <p:menuitem value="trash" icon="/resources/images/macosx/trash.png" url="#"/>  
+            </p:dock>  
+
+            <p:stack icon="/resources/images/stack/stack.png">  
+                <p:menuitem value="Aperture" icon="/resources/images/stack/aperture.png" url="#" />  
+                <p:menuitem value="Photoshop" icon="/resources/images/stack/photoshop.png" url="#"/>  
+                <p:menuitem value="Coda" icon="/resources/images/stack/coda.png" url="#"/>  
+                <p:menuitem value="Safari" icon="/resources/images/stack/safari.png" url="#" />  
+                <p:menuitem value="Finder" icon="/resources/images/stack/finder.png" url="#" />  
+            </p:stack> 
+
         </h:form>
     </h:body>  
 </html>
