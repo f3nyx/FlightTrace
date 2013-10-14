@@ -33,7 +33,7 @@ public class Empleado extends GeneratedIdEntity {
     private int rut;
     @Column(name = "nacionalidad")
     private String nacionalidad;
-   @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.TIMESTAMP)
     private Date fechaNacimiento;
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "IdEmpleado")
@@ -95,5 +95,4 @@ public class Empleado extends GeneratedIdEntity {
     public void setSexo(Sexo sexo) {
         this.sexo = sexo;
     }
-
 }

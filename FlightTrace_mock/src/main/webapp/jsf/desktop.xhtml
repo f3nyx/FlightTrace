@@ -10,9 +10,7 @@
     </h:head>  
 
     <h:body>  
-
         <h:form>
-
             <p:growl showDetail="true" sticky="true"/>  
 
             <p:menubar autoDisplay="false">  
@@ -69,24 +67,18 @@
                       draggable="false"
                       widgetVar="departureFlightTraceForm"
                       showEffect="fade"
-                      hideEffect="fade">
-                <h:form>
+                      hideEffect="fade"
+                      resizable="false">
+<!--                <h:form>
                     <h:panelGrid columns="3">
-                        <h:outputLabel for="firstname" value="Firstname: *" />  
-                        <p:inputText id="firstname"   
-                                     value="" required="true" label="Firstname">  
-                            <f:validateLength minimum="2" />  
-                        </p:inputText>  
-                        <p:message for="firstname" />  
-
-                        <h:outputLabel for="surname" value="Surname: *" />  
-                        <p:inputText id="surname"   
-                                     value="" required="true" label="Surname"/>  
-                        <p:message for="surname" />
-                        <p:commandButton value="Ajax Submit" update="@form" id="ajax"  
-                                         styleClass="ui-priority-primary"/> 
+                        <h:outputLabel for="" value="Firstname: *" /> 
+                        <p:inputText value="" 
+                                     required="" 
+                                     requiredMessage="este campo no puede estar vacio"
+                                     id="" />
+                        <p:message id="defaultMessage" for="" />  
                     </h:panelGrid>  
-                </h:form>
+                </h:form>-->
             </p:dialog>
 
             <p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false" showEffect="fade" hideEffect="fade">  

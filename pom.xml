@@ -11,9 +11,9 @@
     <modules>
         <module>FlightTrace_model</module>
         <module>FlightTrace_web</module>
-    <module>FlightTrace_mock</module>
-    <module>FlightTrace_mobile</module>
-  </modules>
+        <module>FlightTrace_mock</module>
+        <module>FlightTrace_mobile</module>
+    </modules>
   
     <dependencies>
         <!-- dependencias de log4j -->
@@ -48,6 +48,7 @@
                     <source>1.6</source>
                     <target>1.6</target>
                 </configuration>
+                <version>3.1</version>
             </plugin>
         </plugins>
     </build>

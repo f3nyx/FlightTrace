@@ -4,12 +4,16 @@ import cl.median.trace.data.business.dao.table.ArrivalFlightTraceDAO;
 import cl.median.trace.data.business.dao.table.DepartureFlightTraceDAO;
 import cl.median.trace.data.business.dao.table.DireccionDAO;
 import cl.median.trace.data.business.dao.table.EmpleadoDAO;
+import cl.median.trace.data.business.dao.table.VueloDAO;
 import cl.median.trace.data.business.model.table.ArrivalFlightTrace;
 import cl.median.trace.data.business.model.table.DepartureFlightTrace;
 import cl.median.trace.data.business.model.table.Direccion;
 import cl.median.trace.data.business.model.table.Empleado;
+import cl.median.trace.data.business.model.table.Ruta;
+import cl.median.trace.data.business.model.table.Vuelo;
 import cl.median.trace.data.model.data.EmpleadoEstado;
 import cl.median.trace.data.model.data.Sexo;
+import cl.median.trace.data.model.data.TipoVuelo;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
@@ -37,6 +41,8 @@ public class TestFlightTrace {
     private DepartureFlightTraceDAO departureFlightTraceDAO;
     @Resource(name = "arrivalFlightTraceDAO")
     private ArrivalFlightTraceDAO arrivalFlightTraceDAO;
+    @Resource(name = "vueloDAO")
+    private VueloDAO vueloDAO;
 
     @Test
     public void empleadoTestDAO() {
@@ -151,7 +157,7 @@ public class TestFlightTrace {
 
         ArrivalFlightTrace arrivalFlightTrace = new ArrivalFlightTrace();
 
-        
+
         Calendar a, c, cierre, h1, h2;
         a = c = cierre = h1 = h2 = new GregorianCalendar();
         a.set(2013, 6, 17, 13, 12, 40);
@@ -159,7 +165,7 @@ public class TestFlightTrace {
         cierre.set(2013, 6, 17, 20, 15, 22);
         h1.set(2013, 6, 17, 19, 15, 22);
         h2.set(2013, 6, 17, 22, 15, 22);
-        
+
         arrivalFlightTrace.setAuxiliarExtra("Carlos Mesa");
         arrivalFlightTrace.setAuxiliarVuelo("Auxiliar Mesa");
         arrivalFlightTrace.setCaptain("Capitan Mesa");
@@ -183,16 +189,65 @@ public class TestFlightTrace {
         arrivalFlightTrace.setVersionCabin(123);
         arrivalFlightTrace.setVersionCockpit(123);
 
-        
+
         LOGGER.debug("#############Arrival :" + arrivalFlightTrace.toString());
-        
-        
+
+
         arrivalFlightTraceDAO.persist(arrivalFlightTrace);
-        
+
         List<ArrivalFlightTrace> arrivalFlightTraces = new ArrayList<ArrivalFlightTrace>();
-        
+
         arrivalFlightTraces = arrivalFlightTraceDAO.findAll();
-        
+
         Assert.assertFalse(arrivalFlightTraces.isEmpty());
+    }
+
+    @Test
+    public void VueloTest() {
+
+        LOGGER.debug("/\n///////////////////// inicio de test ArrivalFlightTrace //\n");
+
+        Vuelo vuelo = new Vuelo();
+
+        Calendar i, l;
+        i = l = new GregorianCalendar();
+        i.set(1989, 12, 13, 15, 30, 40);
+        l.set(1989, 12, 13, 15, 30, 40); 
+        
+        List<Ruta> rutas = new ArrayList<Ruta>();
+        Ruta ruta = new Ruta();
+        ruta.setAeropuertoSalida("salida");
+        ruta.setAeropuertoLlegada("llegada");
+
+        vuelo.setAeropuertoArribo("aeropuerto1");
+        vuelo.setAeropuertoSalida("aeropuerto2");
+        vuelo.setAvionDisponible("avion1");
+        vuelo.setCabinCrew("trabajadores1");
+        vuelo.setCarga(1);
+        vuelo.setCorreo(1);
+        vuelo.setFlightCrew("trabajadores2");
+        vuelo.setInicio(i.getTime());
+        vuelo.setLlegada(l.getTime());
+        vuelo.setRutaDisponible("ruta1");
+        vuelo.setTipoVuelo(TipoVuelo.CARGA);
+        vuelo.setResumenVuelo(1);
+        vuelo.setRutas(null);
+        
+        
+        ruta.setVuelo(vuelo);
+        rutas.add(ruta);
+        
+        vuelo.setRutas(rutas);
+        
+        LOGGER.debug("#############Vuelo :" + vuelo.toString());
+        
+        vueloDAO.persist(vuelo);
+        
+        List<Vuelo> vuelos = new ArrayList<Vuelo>();
+        
+        vuelos = vueloDAO.findAll();
+        
+        Assert.assertFalse(vuelos.isEmpty());
+        
     }
 }

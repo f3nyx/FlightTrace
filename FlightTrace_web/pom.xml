@@ -36,6 +36,7 @@
                     <server>tomcat</server>
                     <path>/flightTrace</path>
                 </configuration>
+                <version>1.1</version>
             </plugin>
         </plugins>
     </build>
@@ -43,6 +44,7 @@
     
     <properties>
         <deployUrl>http://127.0.0.1:8080/manager</deployUrl>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     
     <dependencies>
