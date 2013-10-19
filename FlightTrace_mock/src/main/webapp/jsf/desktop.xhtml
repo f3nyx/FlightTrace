@@ -10,9 +10,9 @@
     </h:head>  
 
     <h:body>  
+        <!--<h:form>-->
+        <!--            <p:growl showDetail="true" sticky="true"/>  -->
         <h:form>
-            <p:growl showDetail="true" sticky="true"/>  
-
             <p:menubar autoDisplay="false">  
                 <p:submenu icon="appleIcon" label=" ">  
                     <p:menuitem value="About This Mac" url="#" onclick="info.show();" 
@@ -37,64 +37,282 @@
                 <p:submenu label="View">  
                     <p:menuitem value="Source" url="#" onclick="source.show();"
                                 icon="ui-icon-search"></p:menuitem>  
-                </p:submenu>  
-            </p:menubar>  
+                </p:submenu>
 
-            <p:dialog header="About This Mac" draggable="true" widgetVar="info" showEffect="fade" hideEffect="fade">  
-                <h:form>  
-                    <h:panelGrid columns="1" style="width:100%;text-align:center;">  
-                        <p:graphicImage value="/resources/images/macosx/apple_logo.png"/>  
-                        <h:outputText value="MOCK OS X" style="font-size:16px"/>  
-                        <h:outputText value="Version 10.5.7" />  
-                        <p:commandButton value="Software Update" async="true" onclick="return false;"/>  
-                    </h:panelGrid>  
+                <p:submenu label="Prototipo">  
+                    <p:menuitem value="Ingreso de Vuelos" 
+                                url="#" 
+                                onclick="ingresoVuelos.show();"
+                                icon="ui-icon-plus">
+                    </p:menuitem>    
+                    <p:menuitem value="Ingreso de Rutas" 
+                                url="#" 
+                                onclick="ingresoRutas.show();"
+                                icon="ui-icon-plus">
+                    </p:menuitem>    
+                    <p:menuitem value="Tabla de Vuelos" 
+                                url="#" 
+                                onclick="tablaVuelos.show();"
+                                icon="ui-icon-search">
+                    </p:menuitem>  
+                </p:submenu>
+            </p:menubar> 
+        </h:form>
 
-                    <h:panelGrid columns="2">  
-                        <h:outputText value="Processor" style="font-weight:bold"/>  
-                        <h:outputText value="2.4 GHz Intel Core 2 Duo" />  
+        <p:dialog header="About This Mac" draggable="true" widgetVar="info" showEffect="fade" hideEffect="fade">  
+            <h:form>  
+                <h:panelGrid columns="1" style="width:100%;text-align:center;">  
+                    <p:graphicImage value="/resources/images/macosx/apple_logo.png"/>  
+                    <h:outputText value="MOCK OS X" style="font-size:16px"/>  
+                    <h:outputText value="Version 10.5.7" />  
+                    <p:commandButton value="Software Update" async="true" onclick="return false;"/>  
+                </h:panelGrid>  
 
-                        <h:outputText value="Memory" style="font-weight:bold"/>  
-                        <h:outputText value="4 GB 667 MHz DDR2 SDRAM" />  
+                <h:panelGrid columns="2">  
+                    <h:outputText value="Processor" style="font-weight:bold"/>  
+                    <h:outputText value="2.4 GHz Intel Core 2 Duo" />  
 
-                        <h:outputText value="Startup Disk" style="font-weight:bold"/>  
-                        <h:outputText value="Macintosh HD" />  
-                    </h:panelGrid>  
+                    <h:outputText value="Memory" style="font-weight:bold"/>  
+                    <h:outputText value="4 GB 667 MHz DDR2 SDRAM" />  
 
-                </h:form>  
-            </p:dialog> 
+                    <h:outputText value="Startup Disk" style="font-weight:bold"/>  
+                    <h:outputText value="Macintosh HD" />  
+                </h:panelGrid>  
 
-            <p:dialog header="Departure Flight Trace Form"
-                      draggable="false"
-                      widgetVar="departureFlightTraceForm"
-                      showEffect="fade"
-                      hideEffect="fade"
-                      resizable="false">
-<!--                <h:form>
-                    <h:panelGrid columns="3">
-                        <h:outputLabel for="" value="Firstname: *" /> 
-                        <p:inputText value="" 
-                                     required="" 
-                                     requiredMessage="este campo no puede estar vacio"
-                                     id="" />
-                        <p:message id="defaultMessage" for="" />  
-                    </h:panelGrid>  
-                </h:form>-->
-            </p:dialog>
+            </h:form>  
+        </p:dialog> 
 
-            <p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false" showEffect="fade" hideEffect="fade">  
-                <h:form>  
-                    <p:terminal widgetVar="term" commandHandler="#{terminalController.handleCommand}" width="590px"  
-                                welcomeMessage="Welcome to PrimeFaces Terminal, how are you today? Try date and greet  commands."/>  
-                </h:form>  
-            </p:dialog>  
+        <p:dialog header="Departure Flight Trace Form"
+                  draggable="false"
+                  widgetVar="departureFlightTraceForm"
+                  showEffect="fade"
+                  hideEffect="fade"
+                  resizable="false">
+            <!--<h:form>-->
+            asdf
+            <!--                    <h:panelGrid columns="3">
+                                    <h:outputLabel for="" value="Firstname: *" /> 
+                                    <p:inputText value="" 
+                                                 required="" 
+                                                 requiredMessage="este campo no puede estar vacio"
+                                                 id="" />
+                                    <p:message id="defaultMessage" for="" />  
+                                </h:panelGrid>  -->
+            <!--</h:form>-->
+        </p:dialog>
 
-            <p:dialog widgetVar="terminal" styleClass="terminal terminalDialog" width="600" height="400" header="Terminal" showEffect="fade" hideEffect="fade">  
-                <h:form>  
-                    <p:terminal commandHandler="#{terminalController.handleCommand}" width="100%" height="100%"   
-                                welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/>  
-                </h:form>  
-            </p:dialog>  
+        <p:dialog header="Ingreso de Vuelos"
+                  draggable="true"
+                  widgetVar="ingresoVuelos"
+                  showEffect="fade"
+                  hideEffect="fade"
+                  resizable="false"
+                  maximizable="true">
+            <h:form>
+                <h:panelGrid columns="3">
+                    <h:outputLabel value="Aeropuerto de Salida: *" 
+                                   for="aeropuertoSalida"/>
+                    <p:inputText id="aeropuertoSalida"
+                                 value="${addVueloBean.vuelo.aeropuertoSalida}"
+                                 required="true" 
+                                 label="Aeropuerto de Salida"/>
+                    <p:message for="aeropuertoSalida" 
+                               id="aeropuertoSalidaMessage"/> 
 
+
+                    <h:outputLabel value="Aeropuerto de Arribo: *" 
+                                   for="aeropuertoArribo"/>
+                    <p:inputText id="aeropuertoArribo"
+                                 value="${addVueloBean.vuelo.aeropuertoArribo}"
+                                 required="true" 
+                                 label="Aeropuerto de Arribo"/>
+                    <p:message for="aeropuertoArribo" 
+                               id="aeropuertoArriboMessage" />
+
+
+                    <h:outputLabel value="Avion Disponible: *" 
+                                   for="avionDisponible"/>
+                    <p:inputText id="avionDisponible"
+                                 value="${addVueloBean.vuelo.avionDisponible}"
+                                 required="true" 
+                                 label="Avion Disponible"/>
+                    <p:message for="avionDisponible" 
+                               id="avionDisponibleMessage" />
+
+
+                    <h:outputLabel value="Flight Crew: *" 
+                                   for="flightCrew"/>
+                    <p:inputText id="flightCrew"
+                                 value="${addVueloBean.vuelo.cabinCrew}"
+                                 required="true" 
+                                 label="Flight Crew"/>
+                    <p:message for="flightCrew" 
+                               id="flightCrewMessage" />
+
+
+                    <h:outputLabel value="Cabin Crew: *" 
+                                   for="cabinCrew"/>
+                    <p:inputText id="cabinCrew"
+                                 value="${addVueloBean.vuelo.cabinCrew}"
+                                 required="true" 
+                                 label="Cabin Crew"/>
+                    <p:message for="cabinCrew" 
+                               id="cabinCrewMessage" />
+
+                    <h:outputLabel value="Ruta Disponible: *" 
+                                   for="rutaDisponible"/>
+                    <p:inputText id="rutaDisponible"
+                                 value="${addVueloBean.vuelo.rutaDisponible}"
+                                 required="true" 
+                                 label="Ruta Disponible"/>
+                    <p:message for="rutaDisponible" 
+                               id="rutaDisponibleMessage" />
+
+                    <h:outputLabel value="Tipo de Vuelo: *" 
+                                   for="tipoVuelo"/>
+                    <p:selectOneMenu id="tipoVuelo"
+                                     label="Tipo de Vuelo"
+                                     value="${addVueloBean.vuelo.tipoVuelo}" 
+                                     converter="tipoVuelo">
+                        <f:selectItem itemLabel="Pasajeros" itemValue="Pasajeros" />
+                        <f:selectItem itemLabel="Carga" itemValue="Carga" />
+                        <f:selectItem itemLabel="Ferry" itemValue="Ferry" />
+                    </p:selectOneMenu>
+                    <p:message for="tipoVuelo" 
+                               id="tipoVueloMessage" />
+
+                    <h:outputLabel for="carga" 
+                                   value="Carga: *" />  
+                    <p:spinner id="carga"   
+                               value="${addVueloBean.vuelo.carga}"
+                               required="true"
+                               min="0"
+                               max="255"/>
+                    <p:message for="carga" 
+                               id="cargaMessage" />
+
+                    <h:outputLabel for="correo" 
+                                   value="Correo: *" />  
+                    <p:spinner id="correo"   
+                               value="${addVueloBean.vuelo.correo}"
+                               required="true"
+                               min="0"
+                               max="255"/>
+                    <p:message for="correo" 
+                               id="correoMessage" />
+
+                    <h:outputLabel for="inicio" 
+                                   value="Inicio: *" />
+                    <p:calendar id="inicio"
+                                label="Inicio"
+                                value="${addVueloBean.vuelo.inicio}"
+                                pattern="MM/dd/yyyy HH:mm:ss"
+                                required="true"/>
+                    <p:message for="inicio" 
+                               id="inicioMessage" />
+
+                    <h:outputLabel for="llegada" 
+                                   value="Llegada: *" />
+                    <p:calendar id="llegada"
+                                label="Llegada"
+                                value="${addVueloBean.vuelo.llegada}"
+                                pattern="MM/dd/yyyy HH:mm:ss"
+                                required="true"/>
+                    <p:message for="llegada" 
+                               id="llegadaMessage" />
+
+                    <h:outputLabel for="resumenVuelo" 
+                                   value="Resumen de Vuelo: *" />  
+                    <p:spinner id="resumenVuelo"   
+                               value="${addVueloBean.vuelo.resumenVuelo}"
+                               required="true"
+                               min="0"
+                               max="255"/>
+                    <p:message for="resumenVuelo" 
+                               id="resumenVueloMessage" />
+
+                    <h:outputLink id="openDialogLink" 
+                                  value="javascript:void(0)" 
+                                  onclick="PF('dlg').show()">
+                        Show the Picture of the Day
+                    </h:outputLink>
+
+                    
+<!--                    <p:commandButton type="button" icon="ui-icon-pin-s"  
+                                     value="Show Map" onclick="PF('dlg').show()" />  
+
+                    <p:dialog widgetVar="dlg" width="625" height="400" modal="true">  
+                        <p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID"  
+                                style="width:600px;height:400px" />  
+                    </p:dialog>  -->
+
+                    <p:commandButton id="guardarAddVueloBean"
+                                     actionListener="${addVueloBean.doSubmit}"
+                                     value="Guardar"
+                                     update="aeropuertoSalida aeropuertoSalidaMessage 
+                                     aeropuertoArribo aeropuertoArriboMessage
+                                     avionDisponible avionDisponibleMessage
+                                     flightCrew flightCrewMessage
+                                     cabinCrew cabinCrewMessage
+                                     rutaDisponible rutaDisponibleMessage
+                                     tipoVuelo tipoVueloMessage
+                                     carga cargaMessage
+                                     correo correoMessage
+                                     inicio inicioMessage
+                                     llegada llegadaMessage
+                                     resumenVuelo resumenVueloMessage"/>
+
+                    <p:messages id="messages" 
+                                showDetail="true" 
+                                autoUpdate="true" 
+                                closable="true"/>  
+                </h:panelGrid>
+            </h:form>
+            <p:dialog id="dialog" header="Login" widgetVar="dlg" resizable="false">
+                        asdf
+                    </p:dialog>
+        </p:dialog>
+                    
+        <p:dialog header="Ingreso de Rutas"
+                  draggable="true"
+                  widgetVar="ingresoRutas"
+                  showEffect="fade"
+                  hideEffect="fade"
+                  resizable="false"
+                  maximizable="true">
+            <h:form>
+                <h:panelGrid columns="3">
+                    asdf
+                </h:panelGrid>
+            </h:form>
+        </p:dialog>
+
+        <p:dialog header="Tabla de Vuelos"
+                  draggable="true"
+                  widgetVar="tablaVuelos"
+                  showEffect="fade"
+                  hideEffect="fade"
+                  resizable="false">
+            <h:form>
+                table
+            </h:form>
+        </p:dialog>
+
+        <p:dialog widgetVar="terminal" width="600" height="400" header="Terminal" resizable="false" showEffect="fade" hideEffect="fade">  
+            <h:form>  
+                <p:terminal widgetVar="term" commandHandler="#{terminalController.handleCommand}"
+                            welcomeMessage="Welcome to PrimeFaces Terminal, how are you today? Try date and greet  commands."/>  
+            </h:form>  
+        </p:dialog>  
+
+        <p:dialog widgetVar="terminal" styleClass="terminal terminalDialog" width="600" height="400" header="Terminal" showEffect="fade" hideEffect="fade">  
+            <h:form>  
+                <p:terminal commandHandler="#{terminalController.handleCommand}" 
+                            welcomeMessage="Welcome to PrimeFaces Terminal, how are you today?"/>  
+            </h:form>  
+        </p:dialog>  
+
+        <h:form>
             <p:dock>  
                 <p:menuitem value="finder" icon="/resources/images/macosx/finder.png" url="#" />  
                 <p:menuitem value="terminal" icon="/resources/images/macosx/terminal.png" url="#" onclick="terminal.show();
@@ -103,16 +321,19 @@
                 <p:menuitem value="itunes" icon="/resources/images/macosx/itunes.png" url="#"/>  
                 <p:menuitem value="ichat" icon="/resources/images/macosx/ichat.png" url="#"/>  
                 <p:menuitem value="trash" icon="/resources/images/macosx/trash.png" url="#"/>  
+
             </p:dock>  
 
             <p:stack icon="/resources/images/stack/stack.png">  
+
                 <p:menuitem value="Aperture" icon="/resources/images/stack/aperture.png" url="#" />  
                 <p:menuitem value="Photoshop" icon="/resources/images/stack/photoshop.png" url="#"/>  
                 <p:menuitem value="Coda" icon="/resources/images/stack/coda.png" url="#"/>  
                 <p:menuitem value="Safari" icon="/resources/images/stack/safari.png" url="#" />  
-                <p:menuitem value="Finder" icon="/resources/images/stack/finder.png" url="#" />  
-            </p:stack> 
+                <p:menuitem value="Finder" icon="/resources/images/stack/finder.png" url="#" /> 
 
+            </p:stack> 
         </h:form>
+        <!--</h:form>-->
     </h:body>  
 </html>

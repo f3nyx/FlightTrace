@@ -8,4 +8,8 @@ public enum Sexo {
     Sexo(String sexo) {
         this.sexo = sexo;
     }
+
+    public String getSexo() {
+        return sexo;
+    }
 }

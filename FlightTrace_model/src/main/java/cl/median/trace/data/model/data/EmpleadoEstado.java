@@ -8,4 +8,8 @@ public enum EmpleadoEstado {
     EmpleadoEstado(String estado) {
         this.estado = estado;
     }
+
+    public String getEstado() {
+        return estado;
+    }
 }

@@ -12,10 +12,26 @@
     <h:body>  
         <h:form>
             <p:spinner />  
-            
+
             ${testBean.edad}
             ${testBean.masculino}
             ${testBean.nombre}
+
+            <h:panelGrid columns="3">
+                <h:outputLabel value="Aeropuerto de Salida: *" 
+                               for="aeropuertoSalida"/>
+                <p:inputText id="aeropuertoSalida"
+                             value="${addVueloBean.vuelo.aeropuertoSalida}"
+                             required="true" 
+                             label="Firstname"/>
+                <p:message for="aeropuertoSalida" 
+                           display="icon"/>  
+
+                <p:commandButton id="guardarAddVueloBean"
+                                 update="@form" 
+                                 actionListener="${addVueloBean.doSubmit}"
+                                 value="Guardar"/>  
+            </h:panelGrid>
         </h:form>
 
     </h:body>  

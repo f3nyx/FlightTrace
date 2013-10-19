@@ -8,4 +8,8 @@ public enum TipoVuelo {
     TipoVuelo(String tipoVuelo) {
         this.tipoVuelo = tipoVuelo;
     }
+
+    public String getTipoVuelo() {
+        return tipoVuelo;
+    }
 }

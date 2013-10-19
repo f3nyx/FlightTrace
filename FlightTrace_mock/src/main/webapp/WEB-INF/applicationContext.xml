@@ -10,4 +10,8 @@ http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
         <property name="masculino" value="true"/>
     </bean>
     
+    <bean id="addVueloBean" 
+          class="cl.median.trace.web.prototype.vuelo.AddVueloBean"
+          scope="session"/>
+    
 </beans>
