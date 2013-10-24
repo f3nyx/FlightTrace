@@ -231,21 +231,6 @@
                     <p:message for="resumenVuelo" 
                                id="resumenVueloMessage" />
 
-                    <h:outputLink id="openDialogLink" 
-                                  value="javascript:void(0)" 
-                                  onclick="PF('dlg').show()">
-                        Show the Picture of the Day
-                    </h:outputLink>
-
-                    
-<!--                    <p:commandButton type="button" icon="ui-icon-pin-s"  
-                                     value="Show Map" onclick="PF('dlg').show()" />  
-
-                    <p:dialog widgetVar="dlg" width="625" height="400" modal="true">  
-                        <p:gmap center="41.381542, 2.122893" zoom="15" type="HYBRID"  
-                                style="width:600px;height:400px" />  
-                    </p:dialog>  -->
-
                     <p:commandButton id="guardarAddVueloBean"
                                      actionListener="${addVueloBean.doSubmit}"
                                      value="Guardar"
@@ -262,17 +247,14 @@
                                      llegada llegadaMessage
                                      resumenVuelo resumenVueloMessage"/>
 
-                    <p:messages id="messages" 
-                                showDetail="true" 
-                                autoUpdate="true" 
-                                closable="true"/>  
+                    <!--                    <p:messages id="messages" 
+                                                    showDetail="true" 
+                                                    autoUpdate="true" 
+                                                    closable="true"/>  -->
                 </h:panelGrid>
             </h:form>
-            <p:dialog id="dialog" header="Login" widgetVar="dlg" resizable="false">
-                        asdf
-                    </p:dialog>
         </p:dialog>
-                    
+
         <p:dialog header="Ingreso de Rutas"
                   draggable="true"
                   widgetVar="ingresoRutas"
@@ -282,7 +264,48 @@
                   maximizable="true">
             <h:form>
                 <h:panelGrid columns="3">
-                    asdf
+
+                    <h:outputLabel value="Aeropuerto de Ruta de Salida: *" 
+                                   for="aeropuertoRutaSalida"/>
+                    <p:inputText id="aeropuertoRutaSalida"
+                                 value="${addRutaBean.ruta.aeropuertoSalida}"
+                                 required="true" 
+                                 label="Aeropuerto de Ruta de Salida"/>
+                    <p:message for="aeropuertoRutaSalida" 
+                               id="aeropuertoRutaSalidaMessage"/> 
+
+
+                    <h:outputLabel value="Aeropuerto de Ruta de Llegada: *" 
+                                   for="aeropuertoRutaLlegada"/>
+                    <p:inputText id="aeropuertoRutaLlegada"
+                                 value="${addRutaBean.ruta.aeropuertoLlegada}"
+                                 required="true" 
+                                 label="Aeropuerto de Ruta de Llegada"/>
+                    <p:message for="aeropuertoRutaLlegada" 
+                               id="aeropuertoRutaLlegadaMessage"/> 
+
+                    <h:outputLabel value="Tramo de Ruta: *" 
+                                   for="tramoRuta"/>
+                    <p:inputText id="tramoRuta"
+                                 value="${addRutaBean.ruta.tramo}"
+                                 required="true" 
+                                 label="Tramo de Ruta"/>
+                    <p:message for="tramoRuta" 
+                               id="tramoRutaMessage"/> 
+
+                    <p:commandButton id="guardarAddVueloBean"
+                                     actionListener="${addRutaBean.doSubmit}"
+                                     value="Guardar"
+                                     update="aeropuertoRutaSalida aeropuertoRutaSalidaMessage
+                                     aeropuertoRutaLlegada aeropuertoRutaLlegadaMessage
+                                     tramoRuta tramoRutaMessage"/>
+
+                    <p:messages id="messages" 
+                                showDetail="true" 
+                                autoUpdate="true" 
+                                closable="true"
+                                globalOnly="true"/>  
+                    
                 </h:panelGrid>
             </h:form>
         </p:dialog>

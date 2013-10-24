@@ -1,0 +1,196 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"  
+      xmlns:f="http://java.sun.com/jsf/core"  
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Ingreso de Vuelos</title>
+        <h:outputStylesheet name="default.css" library="css"/>
+    </h:head>
+    <h:body>  
+        <div align="center">
+            <h1 class="title ui-widget-header ui-corner-all">
+                Formulario de ingreso de Vuelos
+            </h1>        
+        </div>
+        <h:panelGrid columns="2">
+            <p:panel header="Ingrese datos">
+                <h:form id="vuelo">
+                    <h:panelGrid columns="3">
+                        <h:outputLabel value="Aeropuerto de Salida: *" 
+                                       for="aeropuertoSalida"/>
+                        <p:inputText id="aeropuertoSalida"
+                                     value="${addVueloBean.vuelo.aeropuertoSalida}"
+                                     required="true" 
+                                     label="Aeropuerto de Salida"/>
+                        <p:message for="aeropuertoSalida" 
+                                   id="aeropuertoSalidaMessage"/> 
+
+
+                        <h:outputLabel value="Aeropuerto de Arribo: *" 
+                                       for="aeropuertoArribo"/>
+                        <p:inputText id="aeropuertoArribo"
+                                     value="${addVueloBean.vuelo.aeropuertoArribo}"
+                                     required="true" 
+                                     label="Aeropuerto de Arribo"/>
+                        <p:message for="aeropuertoArribo" 
+                                   id="aeropuertoArriboMessage" />
+
+
+                        <h:outputLabel value="Avion Disponible: *" 
+                                       for="avionDisponible"/>
+                        <p:inputText id="avionDisponible"
+                                     value="${addVueloBean.vuelo.avionDisponible}"
+                                     required="true" 
+                                     label="Avion Disponible"/>
+                        <p:message for="avionDisponible" 
+                                   id="avionDisponibleMessage" />
+
+
+                        <h:outputLabel value="Flight Crew: *" 
+                                       for="flightCrew"/>
+                        <p:inputText id="flightCrew"
+                                     value="${addVueloBean.vuelo.cabinCrew}"
+                                     required="true" 
+                                     label="Flight Crew"/>
+                        <p:message for="flightCrew" 
+                                   id="flightCrewMessage" />
+
+
+                        <h:outputLabel value="Cabin Crew: *" 
+                                       for="cabinCrew"/>
+                        <p:inputText id="cabinCrew"
+                                     value="${addVueloBean.vuelo.cabinCrew}"
+                                     required="true" 
+                                     label="Cabin Crew"/>
+                        <p:message for="cabinCrew" 
+                                   id="cabinCrewMessage" />
+
+                        <h:outputLabel value="Ruta Disponible: *" 
+                                       for="rutaDisponible"/>
+                        <p:inputText id="rutaDisponible"
+                                     value="${addVueloBean.vuelo.rutaDisponible}"
+                                     required="true" 
+                                     label="Ruta Disponible"/>
+                        <p:message for="rutaDisponible" 
+                                   id="rutaDisponibleMessage" />
+
+                        <h:outputLabel value="Tipo de Vuelo: *" 
+                                       for="tipoVuelo"/>
+                        <p:selectOneMenu id="tipoVuelo"
+                                         label="Tipo de Vuelo"
+                                         value="${addVueloBean.vuelo.tipoVuelo}" 
+                                         converter="tipoVuelo">
+                            <f:selectItem itemLabel="Pasajeros" itemValue="Pasajeros" />
+                            <f:selectItem itemLabel="Carga" itemValue="Carga" />
+                            <f:selectItem itemLabel="Ferry" itemValue="Ferry" />
+                        </p:selectOneMenu>
+                        <p:message for="tipoVuelo" 
+                                   id="tipoVueloMessage" />
+
+                        <h:outputLabel for="carga" 
+                                       value="Carga: *" />  
+                        <p:spinner id="carga"   
+                                   value="${addVueloBean.vuelo.carga}"
+                                   required="true"
+                                   min="0"
+                                   max="255"/>
+                        <p:message for="carga" 
+                                   id="cargaMessage" />
+
+                        <h:outputLabel for="correo" 
+                                       value="Correo: *" />  
+                        <p:spinner id="correo"   
+                                   value="${addVueloBean.vuelo.correo}"
+                                   required="true"
+                                   min="0"
+                                   max="255"/>
+                        <p:message for="correo" 
+                                   id="correoMessage" />
+
+                        <h:outputLabel for="inicio" 
+                                       value="Inicio: *" />
+                        <p:calendar id="inicio"
+                                    label="Inicio"
+                                    value="${addVueloBean.vuelo.inicio}"
+                                    pattern="MM/dd/yyyy HH:mm:ss"
+                                    required="true"/>
+                        <p:message for="inicio" 
+                                   id="inicioMessage" />
+
+                        <h:outputLabel for="llegada" 
+                                       value="Llegada: *" />
+                        <p:calendar id="llegada"
+                                    label="Llegada"
+                                    value="${addVueloBean.vuelo.llegada}"
+                                    pattern="MM/dd/yyyy HH:mm:ss"
+                                    required="true"/>
+                        <p:message for="llegada" 
+                                   id="llegadaMessage" />
+
+                        <h:outputLabel for="resumenVuelo" 
+                                       value="Resumen de Vuelo: *" />  
+                        <p:spinner id="resumenVuelo"   
+                                   value="${addVueloBean.vuelo.resumenVuelo}"
+                                   required="true"
+                                   min="0"
+                                   max="255"/>
+                        <p:message for="resumenVuelo" 
+                                   id="resumenVueloMessage" />
+
+                        <p:commandButton id="guardarAddVueloBean"
+                                         action="${addVueloBean.doSubmit}"
+                                         value="Guardar"
+                                         update="vuelo"/>
+
+                        <p:messages id="messages" 
+                                    showDetail="true" 
+                                    autoUpdate="true" 
+                                    closable="true"
+                                    globalOnly="true"
+                                    for="vuelo"/>  
+                    </h:panelGrid>
+                </h:form>
+            </p:panel>
+            <p:panel header="Ingrese Rutas">
+                <h:form id="ruta">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="Aeropuerto de Ruta de Salida: *" 
+                                       for="aeropuertoRutaSalida"/>
+                        <p:inputText id="aeropuertoRutaSalida"
+                                     value="${addVueloBean.ruta.aeropuertoSalida}"
+                                     required="true" 
+                                     label="Aeropuerto de Ruta de Salida"/>
+
+                        <h:outputLabel value="Aeropuerto de Ruta de Llegada: *" 
+                                       for="aeropuertoRutaLlegada"/>
+                        <p:inputText id="aeropuertoRutaLlegada"
+                                     value="${addVueloBean.ruta.aeropuertoLlegada}"
+                                     required="true" 
+                                     label="Aeropuerto de Ruta de Llegada"/>
+
+                        <h:outputLabel value="Tramo de Ruta: *" 
+                                       for="tramoRuta"/>
+                        <p:inputText id="tramoRuta"
+                                     value="${addVueloBean.ruta.tramo}"
+                                     required="true" 
+                                     label="Tramo de Ruta"/>
+
+                        <p:commandButton id="guardarAddVueloBean"
+                                         action="${addVueloBean.addRuta}"
+                                         value="Guardar"
+                                         update="ruta"/>
+
+                        <p:messages id="messages" 
+                                    showDetail="true" 
+                                    autoUpdate="true" 
+                                    closable="true"
+                                    globalOnly="false"/>
+                    </h:panelGrid>
+                </h:form>
+            </p:panel>
+        </h:panelGrid>
+    </h:body>
+</html>
+

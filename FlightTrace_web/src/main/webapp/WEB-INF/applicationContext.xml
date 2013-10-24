@@ -10,4 +10,16 @@ http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
         <property name="masculino" value="true"/>
     </bean>
     
+    <bean id="addVueloBean" 
+          class="cl.median.trace.web.bean.add.AddVueloBean"
+          scope="session">
+        <!--<property name="vueloDAO" ref="vueloDAO"/>-->
+    </bean>
+    
+    <!--<bean id="vueloDAO" class="cl.median.trace.data.business.dao.jpa.table.JPAVueloDAO"/>-->
+    
+    <!--<import resource="classpath:dataSourceContext.xml" />-->
+    <import resource="classpath:dataSourceContextDelta.xml" />
+    <import resource="classpath:modelContextDelta.xml" />
+    
 </beans>

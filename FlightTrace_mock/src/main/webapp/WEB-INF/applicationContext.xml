@@ -13,5 +13,8 @@ http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
     <bean id="addVueloBean" 
           class="cl.median.trace.web.prototype.vuelo.AddVueloBean"
           scope="session"/>
+    <bean id="addRutaBean" 
+          class="cl.median.trace.web.prototype.vuelo.AddRutaBean"
+          scope="session"/>
     
 </beans>

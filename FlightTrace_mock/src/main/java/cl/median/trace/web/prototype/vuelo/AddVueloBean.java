@@ -20,21 +20,30 @@ public class AddVueloBean {
 //        LOGGER.debug("######### creación de bean " + TipoVuelo.getAllTipoVuelo().get(0).getTipoVuelo());
     }
 
+//    public String doSubmit(ActionEvent actionEvent) {
+//        String result = null;
+//        LOGGER.debug("######### submit echo");
+//        LOGGER.debug("######### resumen: " + getVuelo().getResumenVuelo());
+//
+//        return result;
+//
+//    }
+
+    public String addRuta(ActionEvent actionEvent) {
+        String result = null;
+        LOGGER.debug("######### RUTA RUTA");
+        LOGGER.debug("######### RUTA: " + getRuta().getAeropuertoLlegada());
+
+        return result;
+
+    }
+
     public Vuelo getVuelo() {
         return vuelo;
     }
 
     public void setVuelo(Vuelo vuelo) {
         this.vuelo = vuelo;
-    }
-
-    public String doSubmit(ActionEvent actionEvent) {
-        String result = null;
-        LOGGER.debug("######### submit echo");
-        LOGGER.debug("######### resumen: " + getVuelo().getResumenVuelo());
-
-        return result;
-
     }
 
     public Ruta getRuta() {
